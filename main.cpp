@@ -1,4 +1,4 @@
-#include <iostream>
+п»ї#include <iostream>
 
 class String{
 private:
@@ -8,34 +8,34 @@ private:
     friend std::istream& operator >> (std::istream& is, String& currentString);
     friend String operator + (const String& left ,const String& right);
 public:
-    // Конструктор - принимает динамический массив char
+    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ - РїСЂРёРЅРёРјР°РµС‚ РґРёРЅР°РјРёС‡РµСЃРєРёР№ РјР°СЃСЃРёРІ char
     String(char* str) : m_size(strlen(str)), m_str(new char[m_size + 1])
     {
         std::copy(str, str + m_size + 1, m_str);
     }
 
-    // Конструктор - принимает один char и их кол-во
-    // explicit запрещает неявное преобразование типов
+    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ - РїСЂРёРЅРёРјР°РµС‚ РѕРґРёРЅ char Рё РёС… РєРѕР»-РІРѕ
+    // explicit Р·Р°РїСЂРµС‰Р°РµС‚ РЅРµСЏРІРЅРѕРµ РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ С‚РёРїРѕРІ
     String(char symbol, unsigned int count) : m_size(count), m_str(new char[m_size + 1])
     {
         std::fill(m_str, m_str + m_size, symbol);
         m_str[m_size] = '\0';
     }
 
-    // Конструктор - принимает на вход один char
+    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ - РїСЂРёРЅРёРјР°РµС‚ РЅР° РІС…РѕРґ РѕРґРёРЅ char
     String(char str) : m_size(1), m_str(new char[2])
     {
         m_str[0] = str;
         m_str[m_size] = '\0';
     }
 
-    //Запрет на конструирование от int
+    //Р—Р°РїСЂРµС‚ РЅР° РєРѕРЅСЃС‚СЂСѓРёСЂРѕРІР°РЅРёРµ РѕС‚ int
     //String(int str) = delete;
 
-    // Конструктор копирования
+    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
     String(const String& copy) : String(copy.m_str){}
 
-    // Оператор присваивания копированием
+    // РћРїРµСЂР°С‚РѕСЂ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ РєРѕРїРёСЂРѕРІР°РЅРёРµРј
     String& operator = (const String& currentString)
     {
         if (this != &currentString)
@@ -47,7 +47,7 @@ public:
         return *this;
     }
 
-    // Оператор +=
+    // РћРїРµСЂР°С‚РѕСЂ +=
     String& operator += (const String& right)
     {
         char* temp = new char[m_size + right.m_size + 1];
@@ -60,13 +60,13 @@ public:
         return *this;
     }
 
-    // Оператор [] – чтение и изменение элемента
+    // РћРїРµСЂР°С‚РѕСЂ [] вЂ“ С‡С‚РµРЅРёРµ Рё РёР·РјРµРЅРµРЅРёРµ СЌР»РµРјРµРЅС‚Р°
     char& operator[](unsigned int index) const
     {
         return m_str[index];
     }
 
-    // Оператор >
+    // РћРїРµСЂР°С‚РѕСЂ >
     bool operator > (const String& right) const
     {
         if (m_size == right.m_size)
@@ -94,7 +94,7 @@ public:
         }
     }
 
-    // Оператор <
+    // РћРїРµСЂР°С‚РѕСЂ <
     bool operator < (const String& right) const
     {
         if (m_size == right.m_size)
@@ -122,7 +122,7 @@ public:
         }
     }
 
-    // Оператор ==
+    // РћРїРµСЂР°С‚РѕСЂ ==
     bool operator == (const String& right) const
     {
         if (strlen(m_str) == (strlen(right.m_str)))
@@ -142,8 +142,8 @@ public:
         }
     }
 
-    // Метод find – поиск первого вхождения символа в строку слева 
-    //(возвращает индекс символа в строке или -1 при отсутствии символа)
+    // РњРµС‚РѕРґ find вЂ“ РїРѕРёСЃРє РїРµСЂРІРѕРіРѕ РІС…РѕР¶РґРµРЅРёСЏ СЃРёРјРІРѕР»Р° РІ СЃС‚СЂРѕРєСѓ СЃР»РµРІР° 
+    //(РІРѕР·РІСЂР°С‰Р°РµС‚ РёРЅРґРµРєСЃ СЃРёРјРІРѕР»Р° РІ СЃС‚СЂРѕРєРµ РёР»Рё -1 РїСЂРё РѕС‚СЃСѓС‚СЃС‚РІРёРё СЃРёРјРІРѕР»Р°)
     int find(char element) const
     {
         for (int i = 0; i < m_size; i++)
@@ -156,20 +156,20 @@ public:
         return -1;
     }
 
-    // Метод length – длина строки
+    // РњРµС‚РѕРґ length вЂ“ РґР»РёРЅР° СЃС‚СЂРѕРєРё
     unsigned int length() const
     { 
         return m_size;
     }
 
-    // Метод c_str – получить массив char
+    // РњРµС‚РѕРґ c_str вЂ“ РїРѕР»СѓС‡РёС‚СЊ РјР°СЃСЃРёРІ char
     char* c_str() const
     {
         return m_str;
     }
 
-    // Метод at для получения доступа (чтение и изменение) к элементу строки с проверкой на выход за пределы строки
-    //(без обработки исключений, т.к. пока не проходили)
+    // РњРµС‚РѕРґ at РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РґРѕСЃС‚СѓРїР° (С‡С‚РµРЅРёРµ Рё РёР·РјРµРЅРµРЅРёРµ) Рє СЌР»РµРјРµРЅС‚Сѓ СЃС‚СЂРѕРєРё СЃ РїСЂРѕРІРµСЂРєРѕР№ РЅР° РІС‹С…РѕРґ Р·Р° РїСЂРµРґРµР»С‹ СЃС‚СЂРѕРєРё
+    //(Р±РµР· РѕР±СЂР°Р±РѕС‚РєРё РёСЃРєР»СЋС‡РµРЅРёР№, С‚.Рє. РїРѕРєР° РЅРµ РїСЂРѕС…РѕРґРёР»Рё)
     char& at(int index) 
     {
         if (0 <= index && index < m_size)
@@ -183,7 +183,7 @@ public:
         }
     }
 
-    //Диструктор
+    //Р”РёСЃС‚СЂСѓРєС‚РѕСЂ
     ~String()
     {
         if(m_str != nullptr)
@@ -192,7 +192,7 @@ public:
 
 };
 
-// Оператор +
+// РћРїРµСЂР°С‚РѕСЂ +
 String operator + (const String& left ,const String& right)
 {
     String temp = left;
@@ -201,7 +201,7 @@ String operator + (const String& left ,const String& right)
     return temp;
 }
 
-// Оператор вывода
+// РћРїРµСЂР°С‚РѕСЂ РІС‹РІРѕРґР°
 std::ostream& operator << (std::ostream& out, const String& currentString)
 {
     for (int i = 0; i < currentString.m_size; i++)
@@ -212,7 +212,7 @@ std::ostream& operator << (std::ostream& out, const String& currentString)
     return out;
 }
 
-// Оператор ввода
+// РћРїРµСЂР°С‚РѕСЂ РІРІРѕРґР°
 std::istream& operator >> (std::istream& in, String& currentString)
 {
     char* temp = new char[10000];
@@ -237,7 +237,7 @@ std::istream& operator >> (std::istream& in, String& currentString)
 
 int main()
 {
-    //Демонстрация возможностей класса
+    //Р”РµРјРѕРЅСЃС‚СЂР°С†РёСЏ РІРѕР·РјРѕР¶РЅРѕСЃС‚РµР№ РєР»Р°СЃСЃР°
 
     //String error1 = (14, 3);
     //String error2 = (1);
