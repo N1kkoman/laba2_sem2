@@ -183,7 +183,7 @@ public:
         }
     }
 
-    //Диструктор
+    //Деструктор
     ~String()
     {
         if(m_str != nullptr)
