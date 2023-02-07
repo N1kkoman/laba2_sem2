@@ -29,9 +29,6 @@ public:
         m_str[m_size] = '\0';
     }
 
-    //Запрет на конструирование от int
-    //String(int str) = delete;
-
     // Конструктор копирования
     String(const String& copy) : String(copy.m_str){}
 
@@ -239,8 +236,6 @@ int main()
 {
     //Демонстрация возможностей класса
 
-    //String error1 = (14, 3);
-    //String error2 = (1);
     String test = "break";
     String testCin = "";
     std::cin >> testCin;
