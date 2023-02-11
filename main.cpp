@@ -14,8 +14,13 @@ public:
         std::copy(str, str + m_size + 1, m_str);
     }
 
+    // Конструктор пустой строки
+    String() : m_size(0), m_str(new char[1])
+    {
+        m_str[m_size] = '\0';
+    }
+
     // Конструктор - принимает один char и их кол-во
-    // explicit запрещает неявное преобразование типов
     String(char symbol, unsigned int count) : m_size(count), m_str(new char[m_size + 1])
     {
         std::fill(m_str, m_str + m_size, symbol);
@@ -237,7 +242,7 @@ int main()
     //Демонстрация возможностей класса
 
     String test = "break";
-    String testCin = "";
+    String testCin;
     std::cin >> testCin;
     String testMain = "for";
     if (test > testMain){
